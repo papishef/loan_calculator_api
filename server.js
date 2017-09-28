@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const fs = require("fs");
-const readline = require("readline");
 const port = 8082;
 
 const app = express();
