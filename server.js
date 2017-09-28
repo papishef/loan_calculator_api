@@ -15,6 +15,10 @@ router.post("/loan", (req, res) => {
   const months = req.body.months;
   const insurance = req.body.insurance;
 
+  res.json(computeResult(price, months, insurance));
+});
+
+const computeResult = (price, months, insurance) => {
   const lowerRate = 0.069;
   const higherRate = 0.0711;
 
@@ -29,8 +33,8 @@ router.post("/loan", (req, res) => {
   let result =
     price * (rate / 12 / (1 - Math.pow(1 / (1 + rate / 12), months))) * months;
 
-  res.json(result);
-});
+  return result;
+};
 
 app.use("/api", router);
 app.listen(port);
